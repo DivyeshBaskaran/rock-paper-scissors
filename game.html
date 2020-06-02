@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+    </head>
+    <body>
+        <script>
+            //var comp, playnum;
+            //let play ;//= prompt("Choose rock paper or scissors: ");
+            //console.log(play);
+            //play =  play.toLowerCase();
+            function computerPlay (){
+                var ran = parseInt(Math.random()*3);
+                return ran;
+            }
+            function nameToNumber (play){
+                if (play == "rock")
+                    return 0;
+                else if (play =="paper")
+                    return 1;
+                else if (play =="scissors")
+                    return 2;
+            }
+            function numToName (playnum){
+                if (playnum == 0)
+                    return "rock";
+                if (playnum == 1)
+                    return "paper";
+                if (playnum == 2)
+                    return "scissors";
+            }
+            function playRound (comp, playnum){
+
+                if ((comp == 0 && playnum == 1)||(comp == 1 && playnum == 2)||(comp == 2 && playnum == 0)){
+                    return "You Win!";
+                }
+                else if ((playnum == 0 && comp == 1)||(playnum == 1 && comp == 2)||(playnum == 2 && comp == 0)){
+                    return "You Lose!";
+                }
+                else{
+                    return "Its a Tie!";
+                }
+            }
+            function game (){
+                var comp, playnum;
+                let play ;
+                let message; 
+                var compscore = 0, playerscore = 0;
+                console.log("Welcome to the rock paper scissors game. There will be five matches and the one with the most number of points is the winner.")
+                for (var i = 0; i < 5; i++){
+                    console.log("Round: "+(i+1));
+                    play = prompt("Choose rock paper or scissors: ");
+                    play = play.toLowerCase();
+                    playnum = nameToNumber(play);
+                    comp = computerPlay();
+                    console.log("Player Choice: "+play);
+                    console.log("Computer Choice: "+numToName(comp));
+                    console.log(playRound(comp,playnum));
+                    if (playRound(comp,playnum)== "You Win!"){
+                        playerscore++;
+                    }
+                    if (playRound(comp,playnum)== "You Lose!"){
+                        compscore++;
+                    }
+                }
+                console.log("Here are the final Scores\nPlayer: "+playerscore+"\nComputer: "+compscore);
+            }
+            game();
+        </script>
+    </body>
+</html>
